@@ -1,3 +1,5 @@
+import { indexTemplate } from "../templates/index.js";
+
 async function getPhotographers() {
   // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet,
   // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
@@ -9,7 +11,7 @@ async function getPhotographers() {
       country: "France",
       tagline: "Ceci est ma data test",
       price: 400,
-      portrait: "account.png",
+      portrait: "EllieRoseWilkens.jpg",
     },
     {
       name: "Autre data test",
@@ -27,11 +29,11 @@ async function getPhotographers() {
   };
 }
 
-async function displayData(photographers) {
+function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
 
   photographers.forEach((photographer) => {
-    const photographerModel = photographerTemplate(photographer);
+    const photographerModel = indexTemplate(photographer);
     const userCardDOM = photographerModel.getUserCardDOM();
     photographersSection.appendChild(userCardDOM);
   });
