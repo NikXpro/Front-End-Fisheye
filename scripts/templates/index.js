@@ -18,17 +18,24 @@ function indexTemplate(data) {
     h2.textContent = name;
     link.appendChild(h2);
 
+    const infoContainer = document.createElement("div");
+    infoContainer.classList.add("info-container");
+    article.appendChild(infoContainer);
+
     const location = document.createElement("p");
     location.textContent = `${data.city}, ${data.country}`;
-    article.appendChild(location);
+    location.classList.add("location");
+    infoContainer.appendChild(location);
 
     const tagline = document.createElement("p");
     tagline.textContent = data.tagline;
-    article.appendChild(tagline);
+    tagline.classList.add("tagline");
+    infoContainer.appendChild(tagline);
 
     const price = document.createElement("p");
     price.textContent = `${data.price}€/jour`;
-    article.appendChild(price);
+    price.classList.add("price");
+    infoContainer.appendChild(price);
 
     return article;
   }
