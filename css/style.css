@@ -48,6 +48,14 @@ h1 {
   flex-direction: column;
 }
 
+.photographer_section article a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  align-items: center;
+  justify-self: center;
+}
+
 .photographer_section article h2 {
   color: #d3573c;
   font-size: 36px;
