@@ -1,4 +1,6 @@
 @import "./global.css";
+@import "./pages/layout/photographer/galleryContent.css";
+@import "./pages/photographer/galleryItem.css";
 
 #contact_modal {
   display: none;
@@ -10,7 +12,6 @@
   background-color: #fafafa;
   justify-content: space-between;
   height: 300px;
-  margin: 0 100px;
   padding: 0 3.12rem;
 }
 
@@ -50,15 +51,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: start;
-  margin: 0 100px;
   padding: 1.125rem 0;
   gap: 1.44rem;
-}
-
-.photograph-gallery-item-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.125rem;
 }
 
 .sort-container {
@@ -129,49 +123,6 @@
 
 .photographer-sorter-button-opener-arrow.open {
   transform: rotate(180deg);
-}
-
-.photograph-gallery-item {
-  display: flex;
-  flex-direction: column;
-  width: 21.875rem;
-  height: 21.9375rem;
-  gap: 0.63rem;
-}
-
-.photograph-gallery-item-image {
-  width: 21.875rem;
-  height: 18.75rem;
-  border-radius: 0.3125rem;
-
-  object-fit: cover;
-}
-
-.photograph-gallery-item-info {
-  display: flex;
-  justify-content: space-between;
-}
-
-.photograph-gallery-item-title {
-  color: #901c1c;
-  font-size: 1.5rem;
-  font-weight: 400;
-}
-.photograph-gallery-item-likes {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.photograph-gallery-item-likes-count {
-  color: #901c1c;
-  font-size: 1.5rem;
-  text-align: right;
-  font-weight: 500;
-}
-
-.photograph-gallery-item-likes-icon {
-  width: 1.3125rem;
 }
 
 .contact_button {
