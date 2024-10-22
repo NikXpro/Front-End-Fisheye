@@ -5,7 +5,11 @@ export function galleryItem(data) {
   const img = document.createElement("img");
   img.classList.add("photograph-gallery-item-image");
   img.src = `assets/photographers/${data.photographerId}/${data.image}`;
-  img.alt = data.title;
+  img.alt = data.image
+    .replace(/[_-]/g, " ")
+    .replace(/\.[^/.]+$/, "")
+    .replace(/([A-Z])/g, (match, p1, offset) => (offset > 0 ? ` ${p1}` : p1));
+  img.setAttribute("aria-labelledby", `title-${data.id}`); // Référence au titre
   container.appendChild(img);
 
   const info = document.createElement("div");
@@ -13,6 +17,7 @@ export function galleryItem(data) {
 
   const title = document.createElement("h3");
   title.classList.add("photograph-gallery-item-title");
+  title.id = `title-${data.id}`; // Ajout d'un ID unique
   title.textContent = data.title;
   info.appendChild(title);
 
