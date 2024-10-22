@@ -2,6 +2,7 @@ import { profilePicture } from "../../../components/profilePicture.js";
 
 export function photographCard(data) {
   const article = document.createElement("article");
+  article.classList.add("photographer-card");
 
   const link = document.createElement("a");
   link.href = `photographer.html?id=${data.id}`;

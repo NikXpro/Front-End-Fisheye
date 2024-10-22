@@ -1,4 +1,5 @@
 @import url("global.css");
+@import url("pages/index/photographCard.css");
 
 body {
   font-family: "DM Sans", sans-serif;
@@ -20,52 +21,4 @@ p {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   margin-top: 100px;
-}
-
-.photographer_section article {
-  justify-self: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.photographer_section article a {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  align-items: center;
-  justify-self: center;
-}
-
-.photographer_section .info-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.photographer_section .location {
-  color: #901c1c;
-  font-size: 0.8125rem;
-  font-weight: 400;
-  text-align: center;
-}
-
-.photographer_section .tagline {
-  color: #000;
-  font-size: 0.625rem;
-  font-family: "DM Sans";
-}
-
-.photographer_section .price {
-  color: #757575;
-  font-size: 0.5625rem;
-}
-
-.photographer_section article h2 {
-  color: #d3573c;
-  font-size: 2.25rem;
-  font-weight: 400;
 }
