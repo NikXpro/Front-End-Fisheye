@@ -1,4 +1,5 @@
-.photograph-gallery-item {
+.photograph-gallery-item-figure {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.63rem;
@@ -13,6 +14,7 @@
 
 .photograph-gallery-item-info {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
 }
@@ -35,6 +37,11 @@
   font-size: 1.5rem;
   text-align: right;
   font-weight: 600;
+}
+
+.photograph-gallery-item-like-button {
+  background: none;
+  border: none;
 }
 
 .photograph-gallery-item-likes-icon {
