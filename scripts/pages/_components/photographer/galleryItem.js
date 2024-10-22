@@ -2,6 +2,9 @@ export function galleryItem(data) {
   const container = document.createElement("div");
   container.classList.add("photograph-gallery-item");
 
+  const figure = document.createElement("figure");
+  figure.classList.add("photograph-gallery-item-figure");
+
   const img = document.createElement("img");
   img.classList.add("photograph-gallery-item-image");
   img.src = `assets/photographers/${data.photographerId}/${data.image}`;
@@ -9,34 +12,42 @@ export function galleryItem(data) {
     .replace(/[_-]/g, " ")
     .replace(/\.[^/.]+$/, "")
     .replace(/([A-Z])/g, (match, p1, offset) => (offset > 0 ? ` ${p1}` : p1));
-  img.setAttribute("aria-labelledby", `title-${data.id}`); // Référence au titre
-  container.appendChild(img);
+  img.setAttribute("aria-labelledby", `title-${data.id}`);
+  figure.appendChild(img);
 
-  const info = document.createElement("div");
-  info.classList.add("photograph-gallery-item-info");
+  const figcaption = document.createElement("figcaption");
+  figcaption.classList.add("photograph-gallery-item-info");
 
   const title = document.createElement("h3");
   title.classList.add("photograph-gallery-item-title");
-  title.id = `title-${data.id}`; // Ajout d'un ID unique
+  title.id = `title-${data.id}`;
   title.textContent = data.title;
-  info.appendChild(title);
+  figcaption.appendChild(title);
 
   const likesContainer = document.createElement("div");
   likesContainer.classList.add("photograph-gallery-item-likes");
 
-  const likesCount = document.createElement("p");
+  const likesCount = document.createElement("span");
   likesCount.classList.add("photograph-gallery-item-likes-count");
   likesCount.textContent = data.likes;
   likesContainer.appendChild(likesCount);
 
+  const likeButton = document.createElement("button");
+  likeButton.classList.add("photograph-gallery-item-like-button");
+  likeButton.setAttribute("aria-label", "J'aime");
+  likeButton.setAttribute("aria-pressed", "false");
+
   const likesIcon = document.createElement("img");
   likesIcon.classList.add("photograph-gallery-item-likes-icon");
   likesIcon.src = "/assets/icons/favorite.svg";
-  likesIcon.alt = "like";
-  likesContainer.appendChild(likesIcon);
+  likesIcon.alt = "";
+  likeButton.appendChild(likesIcon);
 
-  info.appendChild(likesContainer);
-  container.appendChild(info);
+  likesContainer.appendChild(likeButton);
+  figcaption.appendChild(likesContainer);
+
+  figure.appendChild(figcaption);
+  container.appendChild(figure);
 
   return container;
 }
