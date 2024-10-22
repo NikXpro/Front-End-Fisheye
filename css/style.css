@@ -1,20 +1,5 @@
-@import url("global.css");
-@import url("pages/index/photographCard.css");
-
-body {
-  font-family: "DM Sans", sans-serif;
-  margin: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-}
+@import "global.css";
+@import "pages/index/photographCard.css";
 
 .photographer_section {
   display: grid;
