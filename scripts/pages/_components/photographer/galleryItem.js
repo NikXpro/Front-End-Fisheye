@@ -9,9 +9,13 @@ export function galleryItem(data) {
   img.classList.add("photograph-gallery-item-image");
   img.src = `assets/photographers/${data.photographerId}/${data.image}`;
   img.alt = data.image
-    .replace(/[_-]/g, " ")
-    .replace(/\.[^/.]+$/, "")
-    .replace(/([A-Z])/g, (match, p1, offset) => (offset > 0 ? ` ${p1}` : p1));
+    ? data.image
+        .replace(/[_-]/g, " ")
+        .replace(/\.[^/.]+$/, "")
+        .replace(/([A-Z])/g, (match, p1, offset) =>
+          offset > 0 ? ` ${p1}` : p1
+        )
+    : "Image sans description";
   img.setAttribute("aria-labelledby", `title-${data.id}`);
   figure.appendChild(img);
 
