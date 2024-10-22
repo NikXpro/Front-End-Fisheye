@@ -1,4 +1,4 @@
-import { photographerTemplate } from "../templates/photographer.js";
+import { galleryItem } from "./_components/photographer/galleryItem.js";
 
 async function getPhotographerById(id) {
   try {
@@ -33,13 +33,9 @@ async function displayData(photographer, media) {
   );
 
   if (photographer) {
-    const photographerModel = photographerTemplate(photographer);
-    photographerModel.getUserCardDOM();
-
-    // Afficher les médias du photographe
     media.forEach((item) => {
-      const galleryItem = photographerModel.createGalleryItem(item);
-      galleryContainer.appendChild(galleryItem);
+      const galleryItemElement = galleryItem(item);
+      galleryContainer.appendChild(galleryItemElement);
     });
   } else {
     photographerSection.innerHTML = "<p>Photographe non trouvé</p>";
