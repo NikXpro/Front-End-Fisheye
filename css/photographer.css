@@ -1,49 +1,10 @@
 @import "./global.css";
 @import "./pages/layout/photographer/galleryContent.css";
 @import "./pages/photographer/galleryItem.css";
+@import "./pages/layout/photographer/photographHeader.css";
 
 #contact_modal {
   display: none;
-}
-
-.photograph-header {
-  display: flex;
-  align-items: center;
-  background-color: #fafafa;
-  justify-content: space-between;
-  height: 300px;
-  padding: 0 3.12rem;
-}
-
-.photograph-info {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.photograph-info .photographer-name {
-  font-size: 4rem;
-  color: #d3573c;
-  font-weight: 400;
-}
-
-.photograph-info .photographer-location {
-  font-size: 1.5rem;
-  color: #901c1c;
-  font-weight: 400;
-}
-
-.photograph-info .photographer-tagline {
-  font-size: 1.125rem;
-  color: #000;
-  font-weight: 400;
-}
-
-.photographer-profile-picture {
-  height: 200px;
-  width: 200px;
-  object-fit: cover;
-  border-radius: 50%;
 }
 
 .photograph-gallery {
