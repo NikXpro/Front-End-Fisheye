@@ -47,7 +47,6 @@ async function displayData(photographer, media) {
 }
 
 async function init() {
-  // Récupérez l'ID du photographe depuis l'URL
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
 
