@@ -1,4 +1,4 @@
-import { indexTemplate } from "../templates/index.js";
+import { photographCard } from "./_components/index/photographCard.js";
 
 async function getPhotographers() {
   try {
@@ -15,8 +15,7 @@ function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
 
   photographers.forEach((photographer) => {
-    const photographerModel = indexTemplate(photographer);
-    const userCardDOM = photographerModel.getUserCardDOM();
+    const userCardDOM = photographCard(photographer);
     photographersSection.appendChild(userCardDOM);
   });
 }
