@@ -1,4 +1,5 @@
 import { galleryItem } from "./_components/photographer/galleryItem.js";
+import { displayPhotographerInfo } from "./_components/photographer/photographHeader.js";
 
 async function getPhotographerById(id) {
   try {
@@ -33,6 +34,7 @@ async function displayData(photographer, media) {
   );
 
   if (photographer) {
+    displayPhotographerInfo(photographer);
     media.forEach((item) => {
       const galleryItemElement = galleryItem(item);
       galleryContainer.appendChild(galleryItemElement);
