@@ -1,3 +1,5 @@
+import { profilePicture } from "../../../components/profilePicture.js";
+
 export function displayPhotographerInfo(photographer) {
   const photographHeader = document.querySelector(".photograph-header");
   const photographInfo = photographHeader.querySelector(".photograph-info");
@@ -25,11 +27,7 @@ export function displayPhotographerInfo(photographer) {
   photographInfo.appendChild(infoContainer);
   photographInfo.appendChild(taglineElement);
 
-  // Créer et ajouter l'image de profil
-  const profileImage = document.createElement("img");
-  profileImage.classList.add("photographer-profile-picture");
-  profileImage.src = `/assets/photographers/${photographer.portrait}`;
-  profileImage.alt = photographer.name;
+  const profileImage = profilePicture(photographer.portrait, photographer.name);
 
   photographProfilePicture.appendChild(profileImage);
 }
