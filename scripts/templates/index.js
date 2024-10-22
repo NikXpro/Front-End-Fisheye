@@ -1,4 +1,3 @@
-// Importez la fonction depuis le fichier globalFunctions.js
 import { createProfilePicture } from "./globalFunctions.js";
 
 function indexTemplate(data) {
