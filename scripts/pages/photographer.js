@@ -1,5 +1,6 @@
 import { galleryItem } from "./_components/photographer/galleryItem.js";
 import { displayPhotographerInfo } from "./_components/photographer/photographHeader.js";
+import { select } from "./_components/photographer/select.js";
 
 async function getPhotographerById(id) {
   try {
@@ -35,10 +36,17 @@ async function displayData(photographer, media) {
 
   if (photographer) {
     displayPhotographerInfo(photographer);
-    media.forEach((item) => {
-      const galleryItemElement = galleryItem(item);
-      galleryContainer.appendChild(galleryItemElement);
-    });
+
+    function updateGallery(sortedMedia) {
+      galleryContainer.innerHTML = "";
+      sortedMedia.forEach((item) => {
+        const galleryItemElement = galleryItem(item);
+        galleryContainer.appendChild(galleryItemElement);
+      });
+    }
+
+    select(media, updateGallery);
+    updateGallery(media); // Affichage initial
   } else {
     photographerSection.innerHTML = "<p>Photographe non trouvé</p>";
   }
