@@ -2,6 +2,7 @@
 @import "./pages/layout/photographer/galleryContent.css";
 @import "./pages/photographer/galleryItem.css";
 @import "./pages/layout/photographer/photographHeader.css";
+@import "./_components/customSelect.css";
 
 #contact_modal {
   display: none;
@@ -16,8 +17,9 @@
   gap: 1.44rem;
 }
 
-.sort-container {
+.photograph-select {
   display: flex;
+  flex-direction: row;
   align-items: center;
 }
 
