@@ -1,3 +1,4 @@
+import { createCarousel, openCarousel } from "../components/carousel.js";
 import { galleryItem } from "./_components/photographer/galleryItem.js";
 import { displayPhotographerInfo } from "./_components/photographer/photographHeader.js";
 import { select } from "./_components/photographer/select.js";
@@ -8,10 +9,7 @@ async function getPhotographerById(id) {
     const data = await response.json();
 
     id = parseInt(id);
-    // Trouvez le photographe correspondant à l'ID
     const photographer = data.photographers.find((p) => p.id === parseInt(id));
-
-    // Trouvez tous les médias associés à ce photographe
     const media = data.media.filter((m) => m.photographerId === parseInt(id));
 
     if (!photographer) {
@@ -26,6 +24,13 @@ async function getPhotographerById(id) {
     );
     return { photographer: null, media: [] };
   }
+}
+
+function setupGalleryClick() {
+  const images = document.querySelectorAll(".photograph-gallery-item-image");
+  images.forEach((img, index) => {
+    img.onclick = () => openCarousel(images, index);
+  });
 }
 
 async function displayData(photographer, media) {
@@ -43,16 +48,20 @@ async function displayData(photographer, media) {
         const galleryItemElement = galleryItem(item);
         galleryContainer.appendChild(galleryItemElement);
       });
+      setupGalleryClick();
     }
 
     select(media, updateGallery);
-    updateGallery(media); // Affichage initial
+    updateGallery(media);
+    setupGalleryClick();
   } else {
     photographerSection.innerHTML = "<p>Photographe non trouvé</p>";
   }
 }
 
 async function init() {
+  createCarousel();
+
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
 
