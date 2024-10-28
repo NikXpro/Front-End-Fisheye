@@ -25,7 +25,7 @@
 
 .carousel img {
   object-fit: contain;
-  max-width: calc(100% - 13.62rem); /* Adjusting for button space */
+  max-width: calc(100% - 13.62rem);
   max-height: 100%;
 }
 
