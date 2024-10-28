@@ -1,3 +1,9 @@
+/**
+ * Creates a custom select dropdown component with keyboard navigation and ARIA attributes
+ * @param {string[]} options - Array of option strings to display in the dropdown
+ * @param {string} defaultText - Default text to show when no option is selected (defaults to "Popularité")
+ * @returns {HTMLElement} The custom select dropdown element
+ */
 export function customSelect(options, defaultText = "Popularité") {
   const details = document.createElement("details");
   details.classList.add("custom-select");

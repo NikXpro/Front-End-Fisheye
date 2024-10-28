@@ -1,5 +1,14 @@
 import { profilePicture } from "../../../components/profilePicture.js";
 
+/**
+ * Displays the photographer's information in the header section
+ * @param {Object} photographer - The photographer data object
+ * @param {string} photographer.name - The photographer's name
+ * @param {string} photographer.city - The photographer's city
+ * @param {string} photographer.country - The photographer's country
+ * @param {string} photographer.tagline - The photographer's tagline
+ * @param {string} photographer.portrait - The photographer's profile picture filename
+ */
 export function displayPhotographerInfo(photographer) {
   const photographHeader = document.querySelector(".photograph-header");
   const photographInfo = photographHeader.querySelector(".photograph-info");
@@ -7,7 +16,6 @@ export function displayPhotographerInfo(photographer) {
     ".photograph-profile-picture"
   );
 
-  // Créer et ajouter les informations du photographe
   const infoContainer = document.createElement("div");
 
   const nameElement = document.createElement("h1");

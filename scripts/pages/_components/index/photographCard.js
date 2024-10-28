@@ -1,5 +1,17 @@
 import { profilePicture } from "../../../components/profilePicture.js";
 
+/**
+ * Creates a photographer card component for the homepage
+ * @param {Object} data - The photographer data object
+ * @param {number} data.id - The photographer's unique ID
+ * @param {string} data.name - The photographer's name
+ * @param {string} data.portrait - The photographer's profile picture filename
+ * @param {string} data.city - The photographer's city
+ * @param {string} data.country - The photographer's country
+ * @param {string} data.tagline - The photographer's tagline
+ * @param {number} data.price - The photographer's daily rate in euros
+ * @returns {HTMLElement} The photographer card DOM element
+ */
 export function photographCard(data) {
   const article = document.createElement("article");
   article.classList.add("photographer-card");

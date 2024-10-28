@@ -1,3 +1,7 @@
+/**
+ * Creates and returns a carousel component for displaying images in a lightbox view
+ * @returns {HTMLElement} The carousel DOM element
+ */
 export function createCarousel() {
   const carousel = document.createElement("div");
   carousel.id = "carousel";
@@ -17,6 +21,11 @@ export function createCarousel() {
   return carousel;
 }
 
+/**
+ * Opens the carousel with the provided images starting at the specified index
+ * @param {HTMLImageElement[]} images - Array of image elements to display in the carousel
+ * @param {number} index - Starting index in the images array to display first
+ */
 export function openCarousel(images, index) {
   const carousel = document.getElementById("carousel");
   const carouselImage = carousel.querySelector(".carousel-image");

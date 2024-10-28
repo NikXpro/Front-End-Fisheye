@@ -1,3 +1,13 @@
+/**
+ * Creates a gallery item element for a photographer's photo
+ * @param {Object} data - The photo data
+ * @param {number} data.photographerId - The photographer's ID
+ * @param {string} data.image - The image filename
+ * @param {string} data.title - The photo title
+ * @param {number} data.likes - The number of likes on the photo
+ * @param {number} data.id - The unique ID of the photo
+ * @returns {HTMLElement} The DOM element containing the photo and its information
+ */
 export function galleryItem(data) {
   const container = document.createElement("div");
   container.classList.add("photograph-gallery-item");
