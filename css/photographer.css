@@ -3,7 +3,7 @@
 @import "./pages/photographer/galleryItem.css";
 @import "./pages/layout/photographer/photographHeader.css";
 @import "./_components/customSelect.css";
-
+@import "./_components/carousel.css";
 #contact_modal {
   display: none;
 }
