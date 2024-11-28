@@ -4,6 +4,7 @@
  */
 
 import { createCarousel, openCarousel } from "../components/carousel.js";
+import { initContactForm } from "./_components/photographer/contactForm.js";
 import { galleryItem } from "./_components/photographer/galleryItem.js";
 import { displayPhotographerInfo } from "./_components/photographer/photographHeader.js";
 import { select } from "./_components/photographer/select.js";
@@ -79,7 +80,7 @@ async function displayData(photographer, media) {
 }
 
 /**
- * Initializes the page by setting up the carousel and fetching photographer data
+ * Initializes the page by setting up the carousel, fetching photographer data and initializing contact form
  */
 async function init() {
   createCarousel();
@@ -89,8 +90,9 @@ async function init() {
 
   if (id) {
     const { photographer, media } = await getPhotographerById(id);
-    console.log(photographer, media);
-    displayData(photographer, media);
+    //console.log(photographer, media);
+    await displayData(photographer, media);
+    initContactForm();
   } else {
     console.error("No photographer ID specified in URL");
   }
