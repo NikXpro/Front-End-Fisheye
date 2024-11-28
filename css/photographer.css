@@ -4,9 +4,7 @@
 @import "./pages/layout/photographer/photographHeader.css";
 @import "./_components/customSelect.css";
 @import "./_components/carousel.css";
-#contact_modal {
-  display: none;
-}
+@import "./_components/contactModal.css";
 
 .photograph-gallery {
   display: flex;
@@ -28,66 +26,6 @@
   margin-right: 20px;
 }
 
-.photographer-sorter {
-  position: relative;
-}
-
-.photographer-sorter-button {
-  background-color: #901c1c;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 15px 20px;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 170px;
-}
-
-.photographer-sorter-list {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #901c1c;
-  border-radius: 5px;
-  width: 170px;
-  display: none;
-  flex-direction: column;
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
-.photographer-sorter-list.open {
-  display: flex;
-}
-
-.photographer-sorter-item {
-  color: white;
-  padding: 15px 20px;
-  cursor: pointer;
-  border: none;
-  background: none;
-  text-align: left;
-  width: 100%;
-}
-
-.photographer-sorter-item-divider {
-  height: 1px;
-  background-color: white;
-  margin: 0 10px;
-}
-
-.photographer-sorter-button-opener-arrow {
-  transition: transform 0.3s ease;
-}
-
-.photographer-sorter-button-opener-arrow.open {
-  transform: rotate(180deg);
-}
-
 .contact_button {
   font-size: 20px;
   font-weight: bold;
@@ -99,58 +37,4 @@
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.modal {
-  border-radius: 5px;
-  background-color: #db8876;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 35px;
-  margin: auto;
-}
-
-.modal header {
-  justify-content: space-between;
-  width: 100%;
-}
-
-.modal header img {
-  cursor: pointer;
-}
-
-.modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
-}
-
-form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-form label {
-  color: #312e2e;
-  font-size: 36px;
-}
-
-form div {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: self-start;
-  margin-bottom: 26px;
-}
-
-form input {
-  width: 100%;
-  height: 68px;
-  border: none;
-  border-radius: 5px;
 }
