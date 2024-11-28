@@ -7,6 +7,7 @@ export function createCarousel() {
   carousel.id = "carousel";
   carousel.className = "carousel";
   carousel.setAttribute("aria-label", "image closeup view");
+  carousel.setAttribute("role", "dialog");
   carousel.style.display = "none";
 
   carousel.innerHTML = `
@@ -29,6 +30,9 @@ export function createCarousel() {
 export function openCarousel(images, index) {
   const carousel = document.getElementById("carousel");
   const carouselImage = carousel.querySelector(".carousel-image");
+  const closeButton = carousel.querySelector(".close");
+  const prevButton = carousel.querySelector(".prev");
+  const nextButton = carousel.querySelector(".next");
   let currentIndex = index;
 
   function updateImage() {
@@ -36,24 +40,76 @@ export function openCarousel(images, index) {
     carouselImage.alt = images[currentIndex].alt;
   }
 
-  carousel.querySelector(".close").onclick = () => {
-    console.log("Closing carousel");
+  // Gestion de la fermeture
+  closeButton.onclick = closeCarousel;
+
+  // Gestion des boutons précédent/suivant
+  prevButton.onclick = showPreviousImage;
+  nextButton.onclick = showNextImage;
+
+  function closeCarousel() {
     carousel.style.display = "none";
     document.body.classList.remove("no-scroll");
-  };
+    // Retourner le focus à l'image qui a ouvert le carousel
+    images[currentIndex].focus();
+  }
 
-  carousel.querySelector(".prev").onclick = () => {
+  function showPreviousImage() {
     currentIndex = (currentIndex - 1 + images.length) % images.length;
     updateImage();
-  };
+  }
 
-  carousel.querySelector(".next").onclick = () => {
+  function showNextImage() {
     currentIndex = (currentIndex + 1) % images.length;
     updateImage();
-  };
+  }
 
+  // Gestion du clavier
+  function handleKeyboard(event) {
+    switch (event.key) {
+      case "Escape":
+        event.preventDefault();
+        closeCarousel();
+        break;
+      case "ArrowLeft":
+        event.preventDefault();
+        showPreviousImage();
+        break;
+      case "ArrowRight":
+        event.preventDefault();
+        showNextImage();
+        break;
+      case "Tab":
+        // Piéger le focus dans le carousel
+        const focusableElements = carousel.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const firstFocusable = focusableElements[0];
+        const lastFocusable = focusableElements[focusableElements.length - 1];
+
+        if (event.shiftKey) {
+          if (document.activeElement === firstFocusable) {
+            event.preventDefault();
+            lastFocusable.focus();
+          }
+        } else {
+          if (document.activeElement === lastFocusable) {
+            event.preventDefault();
+            firstFocusable.focus();
+          }
+        }
+        break;
+    }
+  }
+
+  // Ajouter les écouteurs d'événements
+  carousel.addEventListener("keydown", handleKeyboard);
+
+  // Initialisation
   updateImage();
   carousel.style.display = "flex";
   document.body.classList.add("no-scroll");
-  console.log("Opening carousel, no-scroll added");
+
+  // Mettre le focus sur le bouton de fermeture à l'ouverture
+  closeButton.focus();
 }
