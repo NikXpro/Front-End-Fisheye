@@ -13,6 +13,33 @@ function displayModal() {
 
   modal.style.display = "block";
   document.body.style.overflow = "hidden";
+
+  // Focus sur le premier champ lors de l'ouverture
+  const firstInput = modal.querySelector("input");
+  firstInput.focus();
+
+  // Piéger le focus dans la modale
+  const focusableElements = modal.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  const firstFocusable = focusableElements[0];
+  const lastFocusable = focusableElements[focusableElements.length - 1];
+
+  modal.addEventListener("keydown", (e) => {
+    if (e.key === "Tab") {
+      if (e.shiftKey) {
+        if (document.activeElement === firstFocusable) {
+          e.preventDefault();
+          lastFocusable.focus();
+        }
+      } else {
+        if (document.activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable.focus();
+        }
+      }
+    }
+  });
 }
 
 function closeModal() {
