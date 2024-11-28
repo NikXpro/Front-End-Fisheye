@@ -39,8 +39,34 @@ async function getPhotographerById(id) {
  */
 function setupGalleryClick() {
   const images = document.querySelectorAll(".photograph-gallery-item-image");
+
   images.forEach((img, index) => {
+    // Gestion du clic
     img.onclick = () => openCarousel(images, index);
+
+    // Gestion de la navigation au clavier entre les images
+    img.addEventListener("keydown", (event) => {
+      switch (event.key) {
+        case "ArrowRight":
+          event.preventDefault();
+          const nextImage = images[index + 1] || images[0];
+          nextImage.focus();
+          break;
+        case "ArrowLeft":
+          event.preventDefault();
+          const prevImage = images[index - 1] || images[images.length - 1];
+          prevImage.focus();
+          break;
+        case "Home":
+          event.preventDefault();
+          images[0].focus();
+          break;
+        case "End":
+          event.preventDefault();
+          images[images.length - 1].focus();
+          break;
+      }
+    });
   });
 }
 
