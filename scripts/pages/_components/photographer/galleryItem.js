@@ -27,6 +27,17 @@ export function galleryItem(data) {
         )
     : "Image sans description";
   img.setAttribute("aria-labelledby", `title-${data.id}`);
+  img.setAttribute("role", "button");
+  img.tabIndex = 0;
+  img.setAttribute("aria-label", `Ouvrir ${data.title} en vue agrandie`);
+
+  // Gestion du clavier
+  img.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      img.click();
+    }
+  });
   figure.appendChild(img);
 
   const figcaption = document.createElement("figcaption");
@@ -50,6 +61,12 @@ export function galleryItem(data) {
   likeButton.classList.add("photograph-gallery-item-like-button");
   likeButton.setAttribute("aria-label", "J'aime");
   likeButton.setAttribute("aria-pressed", "false");
+  likeButton.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      likeButton.click();
+    }
+  });
 
   const likesIcon = document.createElement("img");
   likesIcon.classList.add("photograph-gallery-item-likes-icon");
