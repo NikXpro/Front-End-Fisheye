@@ -115,3 +115,13 @@
 body.no-scroll {
   overflow: hidden;
 }
+
+.carousel button:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.carousel-image:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
