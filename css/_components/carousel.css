@@ -39,10 +39,24 @@
 
 .carousel .close {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
   top: 10px;
   min-width: 4.5rem;
+  height: 4.5rem;
   z-index: 1001;
   right: 10px;
+
+  border-radius: 0.3125rem;
+  transition: filter, background-color 0.3s ease;
+  &:hover {
+    filter: brightness(0.8);
+
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }
 
 .carousel .close-carousel {
@@ -56,6 +70,13 @@
   justify-content: center;
   min-width: 6.81rem;
   transform: rotate(180deg);
+
+  border-radius: 0.3125rem;
+  transition: filter, background-color 0.3s ease;
+  &:hover {
+    filter: brightness(0.8);
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }
 
 .carousel .next {
@@ -64,6 +85,13 @@
   align-items: center;
   justify-content: center;
   min-width: 6.81rem;
+
+  border-radius: 0.3125rem;
+  transition: filter, background-color 0.3s ease;
+  &:hover {
+    filter: brightness(0.8);
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }
 
 .carousel-arrow {
