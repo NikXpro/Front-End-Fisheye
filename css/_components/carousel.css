@@ -131,3 +131,8 @@ body.no-scroll {
   outline: 2px solid #000;
   outline-offset: 2px;
 }
+
+.carousel-video:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
