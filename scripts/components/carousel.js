@@ -13,7 +13,8 @@ export function createCarousel() {
   carousel.innerHTML = `
     <button class="close" aria-label="Close dialog">×</button>
     <button class="prev" aria-label="Previous image">‹</button>
-    <img src="" alt="" class="carousel-image">
+    <img src="" alt="" class="carousel-image" style="display: none;">
+    <video class="carousel-video" controls style="display: none;"></video>
     <button class="next" aria-label="Next image">›</button>
   `;
 
@@ -30,14 +31,24 @@ export function createCarousel() {
 export function openCarousel(images, index) {
   const carousel = document.getElementById("carousel");
   const carouselImage = carousel.querySelector(".carousel-image");
+  const carouselVideo = carousel.querySelector(".carousel-video");
   const closeButton = carousel.querySelector(".close");
   const prevButton = carousel.querySelector(".prev");
   const nextButton = carousel.querySelector(".next");
   let currentIndex = index;
 
   function updateImage() {
-    carouselImage.src = images[currentIndex].src;
-    carouselImage.alt = images[currentIndex].alt;
+    const currentMedia = images[currentIndex];
+    if (currentMedia.tagName === "IMG") {
+      carouselImage.src = currentMedia.src;
+      carouselImage.alt = currentMedia.alt;
+      carouselImage.style.display = "block";
+      carouselVideo.style.display = "none";
+    } else if (currentMedia.tagName === "VIDEO") {
+      carouselVideo.src = currentMedia.src;
+      carouselVideo.style.display = "block";
+      carouselImage.style.display = "none";
+    }
   }
 
   // Gestion de la fermeture
