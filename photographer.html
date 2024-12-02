@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
@@ -9,110 +9,123 @@
       rel="stylesheet"
     />
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+    <script type="module" src="./scripts/pages/photographer.js"></script>
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+    <header class="header">
+      <a href="/">
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
+      </a>
     </header>
     <main id="main">
       <section class="photograph-header">
-        <div class="photograph-info">
-          <div>
-            <h1 class="photographer-name">Mimi Keel</h1>
-            <h2 class="photographer-location">London, UK</h2>
-          </div>
-          <p class="photographer-tagline">Voir le beau dans le quotidien</p>
-        </div>
-        <button class="contact_button" onclick="displayModal()">
+        <div class="photograph-info"></div>
+        <button class="contact_button" type="button" id="contact_button">
           Contactez-moi
         </button>
-        <div class="photograph-profile-picture">
-          <img
-            class="photographer-profile-picture"
-            src="/assets/photographers/EllieRoseWilkens.jpg"
-            alt="Mimi Keel"
-          />
-        </div>
+        <div class="photograph-profile-picture"></div>
       </section>
       <section class="photograph-gallery">
-        <div class="sort-container">
+        <div class="photograph-select">
           <p id="sort-by">Trier par</p>
-          <div class="photographer-sorter">
-            <button class="photographer-sorter-button">
-              <span id="selected-sort">Popularité</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                fill="none"
-              >
-                <g clip-path="url(#clip0_120_430)">
-                  <path
-                    d="M22.12 11.4531L16 17.5598L9.88 11.4531L8 13.3331L16 21.3331L24 13.3331L22.12 11.4531Z"
-                    fill="white"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_120_430">
-                    <rect width="32" height="32" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-            </button>
-            <ul class="photographer-sorter-list">
-              <li>
-                <button class="photographer-sorter-item">Popularité</button>
-              </li>
-              <li><div class="photographer-sorter-item-divider"></div></li>
-              <li><button class="photographer-sorter-item">Date</button></li>
-              <li><div class="photographer-sorter-item-divider"></div></li>
-              <li><button class="photographer-sorter-item">Titre</button></li>
-            </ul>
-          </div>
         </div>
-
-        <div class="photograph-gallery-container">
-          <div class="photograph-gallery-item-container">
-            <div class="photograph-gallery-item">
-              <img
-              class="photograph-gallery-item-image"
-              src="/assets/photographers/EllieRoseWilkens.jpg"
-              alt="Mimi Keel"
-            />
-            <div class="photograph-gallery-item-info">
-              <h3 class="photograph-gallery-item-title">Arc-en-ciel</h3>
-              <div class="photograph-gallery-item-likes">
-                <p class="photograph-gallery-item-likes-count">11</p>
-                <img
-                  class="photograph-gallery-item-likes-icon"
-                  src="/assets/icons/favorite.svg"
-                  alt="like"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="photograph-gallery-container"></div>
       </section>
     </main>
-    <div id="contact_modal">
+    <div
+      id="carousel"
+      class="carousel"
+      aria-label="image closeup view"
+      style="display: none"
+    >
+      <div class="carousel-container">
+        <button class="close" aria-label="Close dialog">
+          <img
+            class="close-carousel"
+            src="assets/icons/close-carousel.svg"
+            alt="Close dialog"
+          />
+        </button>
+        <button class="prev" aria-label="Previous image">
+          <img
+            class="carousel-arrow"
+            src="./assets/icons/arrow-carousel.svg"
+            alt="Previous image"
+          />
+        </button>
+        <img src="" alt="" class="carousel-image" />
+        <video class="carousel-video" controls style="display: none"></video>
+        <button class="next" aria-label="Next image">
+          <img
+            class="carousel-arrow"
+            src="./assets/icons/arrow-carousel.svg"
+            alt="Next image"
+          />
+        </button>
+      </div>
+    </div>
+    <div id="contact_modal" role="dialog" aria-labelledby="contact-modal-title">
       <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <header class="modal-header">
+          <div class="contact-modal-info">
+            <h2 id="contact-modal-title">Contactez-moi</h2>
+            <span class="photographer-name">John Doe</span>
+          </div>
+          <button
+            class="close-btn"
+            aria-label="Fermer le formulaire de contact"
+          >
+            <img src="assets/icons/close.svg" alt="" />
+          </button>
         </header>
         <form>
-          <div>
-            <label>Prénom</label>
-            <input />
+          <div class="formData">
+            <label for="firstname">Prénom</label>
+            <input
+              type="text"
+              id="firstname"
+              name="firstname"
+              aria-label="Prénom"
+              required
+            />
           </div>
-          <button class="contact_button">Envoyer</button>
+          <div class="formData">
+            <label for="lastname">Nom</label>
+            <input
+              type="text"
+              id="lastname"
+              name="lastname"
+              aria-label="Nom"
+              required
+            />
+          </div>
+          <div class="formData">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              aria-label="Email"
+              required
+            />
+          </div>
+          <div class="formData">
+            <label for="message">Votre message</label>
+            <textarea
+              id="message"
+              name="message"
+              aria-label="Votre message"
+              required
+            ></textarea>
+          </div>
+          <button class="contact_button" type="submit">Envoyer</button>
         </form>
       </div>
     </div>
-    <script src="/scripts/templates/photographer.js"></script>
-    <script type="module" src="/scripts/pages/photographer.js"></script>
-    <script type="module" src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

@@ -1,96 +1,9 @@
-@import url("photographer.css");
-
-body {
-  font-family: "DM Sans", sans-serif;
-  margin: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-}
-
-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 90px;
-}
-
-h1 {
-  color: #901c1c;
-  margin-right: 100px;
-}
-
-.logo {
-  height: 50px;
-  margin-left: 100px;
-}
+@import "global.css";
+@import "pages/index/photographCard.css";
 
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   margin-top: 100px;
-}
-
-.photographer_section article {
-  justify-self: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.photographer_section article a {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  align-items: center;
-  justify-self: center;
-}
-
-.photographer_section .info-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.photographer_section .location {
-  color: #901c1c;
-  font-size: 0.8125rem;
-  font-weight: 400;
-  text-align: center;
-}
-
-.photographer_section .tagline {
-  color: #000;
-  font-size: 0.625rem;
-  font-family: "DM Sans";
-}
-
-.photographer_section .price {
-  color: #757575;
-  font-size: 0.5625rem;
-}
-
-.photographer_section article h2 {
-  color: #d3573c;
-  font-size: 2.25rem;
-  font-weight: 400;
-}
-
-.photographer_section article img {
-  height: 200px;
-  width: 200px;
-  object-fit: cover;
-  border-radius: 50%;
 }

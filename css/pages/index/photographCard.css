@@ -1,0 +1,47 @@
+.photographer-card {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.photographer-card a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  align-items: center;
+  justify-self: center;
+}
+
+.photographer-card .info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.photographer-card .location {
+  color: #901c1c;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.photographer-card .tagline {
+  color: #000;
+  font-size: 0.625rem;
+  font-family: "DM Sans";
+}
+
+.photographer-card .price {
+  color: #757575;
+  font-size: 0.5625rem;
+}
+
+.photographer-card h2 {
+  color: #d3573c;
+  font-size: 2.25rem;
+  font-weight: 400;
+}
