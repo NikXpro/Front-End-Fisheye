@@ -38,32 +38,35 @@ async function getPhotographerById(id) {
  * Sets up click handlers for gallery images to open in carousel
  */
 function setupGalleryClick() {
-  const images = document.querySelectorAll(".photograph-gallery-item-image");
+  const mediaElements = document.querySelectorAll(
+    ".photograph-gallery-item-image"
+  );
 
-  images.forEach((img, index) => {
+  mediaElements.forEach((media, index) => {
     // Gestion du clic
-    img.onclick = () => openCarousel(images, index);
+    media.onclick = () => openCarousel(mediaElements, index);
 
-    // Gestion de la navigation au clavier entre les images
-    img.addEventListener("keydown", (event) => {
+    // Gestion de la navigation au clavier entre les médias
+    media.addEventListener("keydown", (event) => {
       switch (event.key) {
         case "ArrowRight":
           event.preventDefault();
-          const nextImage = images[index + 1] || images[0];
-          nextImage.focus();
+          const nextMedia = mediaElements[index + 1] || mediaElements[0];
+          nextMedia.focus();
           break;
         case "ArrowLeft":
           event.preventDefault();
-          const prevImage = images[index - 1] || images[images.length - 1];
-          prevImage.focus();
+          const prevMedia =
+            mediaElements[index - 1] || mediaElements[mediaElements.length - 1];
+          prevMedia.focus();
           break;
         case "Home":
           event.preventDefault();
-          images[0].focus();
+          mediaElements[0].focus();
           break;
         case "End":
           event.preventDefault();
-          images[images.length - 1].focus();
+          mediaElements[mediaElements.length - 1].focus();
           break;
       }
     });
@@ -116,7 +119,6 @@ async function init() {
 
   if (id) {
     const { photographer, media } = await getPhotographerById(id);
-    //console.log(photographer, media);
     await displayData(photographer, media);
     initContactForm();
   } else {
