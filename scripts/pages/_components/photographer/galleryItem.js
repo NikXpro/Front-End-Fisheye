@@ -15,30 +15,46 @@ export function galleryItem(data) {
   const figure = document.createElement("figure");
   figure.classList.add("photograph-gallery-item-figure");
 
-  const img = document.createElement("img");
-  img.classList.add("photograph-gallery-item-image");
-  img.src = `assets/photographers/${data.photographerId}/${data.image}`;
-  img.alt = data.image
-    ? data.image
-        .replace(/[_-]/g, " ")
-        .replace(/\.[^/.]+$/, "")
-        .replace(/([A-Z])/g, (match, p1, offset) =>
-          offset > 0 ? ` ${p1}` : p1
-        )
-    : "Image sans description";
-  img.setAttribute("aria-labelledby", `title-${data.id}`);
-  img.setAttribute("role", "button");
-  img.tabIndex = 0;
-  img.setAttribute("aria-label", `Ouvrir ${data.title} en vue agrandie`);
+  // Créer soit une image soit une vidéo selon le type de média
+  let mediaElement;
+  if (data.image) {
+    // Création de l'image
+    mediaElement = document.createElement("img");
+    mediaElement.src = `assets/photographers/${data.photographerId}/${data.image}`;
+    mediaElement.alt = data.image
+      ? data.image
+          .replace(/[_-]/g, " ")
+          .replace(/\.[^/.]+$/, "")
+          .replace(/([A-Z])/g, (match, p1, offset) =>
+            offset > 0 ? ` ${p1}` : p1
+          )
+      : "Image sans description";
+  } else if (data.video) {
+    // Création de la vidéo
+    mediaElement = document.createElement("video");
+    mediaElement.src = `assets/photographers/${data.photographerId}/${data.video}`;
+    mediaElement.controls = false; // Pas de contrôles par défaut
+    mediaElement.setAttribute("aria-label", data.title);
+  }
+
+  mediaElement.classList.add("photograph-gallery-item-image");
+  mediaElement.setAttribute("aria-labelledby", `title-${data.id}`);
+  mediaElement.setAttribute("role", "button");
+  mediaElement.tabIndex = 0;
+  mediaElement.setAttribute(
+    "aria-label",
+    `Ouvrir ${data.title} en vue agrandie`
+  );
 
   // Gestion du clavier
-  img.addEventListener("keydown", (event) => {
+  mediaElement.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
-      img.click();
+      mediaElement.click();
     }
   });
-  figure.appendChild(img);
+
+  figure.appendChild(mediaElement);
 
   const figcaption = document.createElement("figcaption");
   figcaption.classList.add("photograph-gallery-item-info");
