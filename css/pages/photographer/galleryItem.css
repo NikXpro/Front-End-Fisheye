@@ -10,11 +10,20 @@
   height: 18.75rem;
   border-radius: 0.3125rem;
   object-fit: cover;
+  cursor: pointer;
 
   &:focus {
     outline: 4px solid #a50000;
     outline-offset: 2px;
   }
+}
+
+.photograph-gallery-item-image[src$=".mp4"] {
+  background: #000;
+}
+
+video.photograph-gallery-item-image {
+  background: #000;
 }
 
 .photograph-gallery-item-info {
