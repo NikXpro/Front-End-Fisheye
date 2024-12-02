@@ -8,21 +8,27 @@ export function customSelect(options, defaultText = "Popularité") {
   const details = document.createElement("details");
   details.classList.add("custom-select");
   details.setAttribute("role", "listbox");
+  details.setAttribute("aria-label", "Trier les photos par");
 
   const summary = document.createElement("summary");
   summary.textContent = defaultText;
   summary.setAttribute("role", "button");
   summary.setAttribute("aria-haspopup", "listbox");
   summary.setAttribute("aria-expanded", "false");
+  summary.setAttribute("aria-controls", "sort-options");
   summary.tabIndex = 0;
 
   const ul = document.createElement("ul");
+  ul.id = "sort-options";
   ul.setAttribute("role", "listbox");
+  ul.setAttribute("aria-label", "Options de tri");
   ul.tabIndex = -1;
 
-  options.forEach((option) => {
+  options.forEach((option, index) => {
     const li = document.createElement("li");
     li.setAttribute("role", "option");
+    li.setAttribute("aria-selected", "false");
+    li.setAttribute("id", `sort-option-${index}`);
     li.textContent = option;
     li.tabIndex = 0;
     ul.appendChild(li);
@@ -36,6 +42,13 @@ export function customSelect(options, defaultText = "Popularité") {
     summary.setAttribute("aria-expanded", details.open);
     if (details.open) {
       ul.querySelector("li").focus();
+      // Annonce aux lecteurs d'écran que le menu est ouvert
+      const announcement = document.createElement("div");
+      announcement.setAttribute("role", "status");
+      announcement.setAttribute("aria-live", "polite");
+      announcement.textContent = "Menu de tri ouvert";
+      details.appendChild(announcement);
+      setTimeout(() => announcement.remove(), 1000);
     }
   });
 
