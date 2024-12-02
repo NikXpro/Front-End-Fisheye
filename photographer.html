@@ -25,8 +25,8 @@
       </section>
       <section class="photograph-gallery" role="region" aria-label="Galerie du photographe">
         <div class="photograph-select">
-          <label for="sort-select" id="sort-by">Trier par</label>
-          <div id="sort-select" aria-labelledby="sort-by"></div>
+          <span id="sort-by">Trier par</span>
+          <div aria-labelledby="sort-by"></div>
         </div>
         <div class="photograph-gallery-container" role="list" aria-label="Liste des photos"></div>
       </section>
@@ -41,12 +41,9 @@
         <button class="prev" aria-label="Image précédente">
           <img class="carousel-arrow" src="./assets/icons/arrow-carousel.svg" alt="" />
         </button>
-        <div class="carousel-media-container">
-          <img src="" alt="" class="carousel-image" role="img" style="display: none" />
-          <video class="carousel-video" controls style="display: none">
-            <track kind="captions" />
-          </video>
-        </div>
+        <img class="carousel-image" src="data:," style="display: none" alt="Image en cours" />
+        <video class="carousel-video" controls style="display: none">
+        </video>
         <button class="next" aria-label="Image suivante">
           <img class="carousel-arrow" src="./assets/icons/arrow-carousel.svg" alt="" />
         </button>
