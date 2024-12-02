@@ -17,10 +17,10 @@
   font-size: 1rem;
   font-weight: 700;
   transition: background-color 0.3s ease;
+}
 
-  &:hover {
-    background-color: #a50000;
-  }
+.custom-select summary:hover {
+  background-color: #a50000;
 }
 
 .custom-select summary::after {
