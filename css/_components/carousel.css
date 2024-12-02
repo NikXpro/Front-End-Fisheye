@@ -29,6 +29,12 @@
   max-height: 100%;
 }
 
+.carousel video {
+  object-fit: contain;
+  max-width: calc(100% - 13.62rem);
+  max-height: 100%;
+}
+
 .carousel button {
   background: none;
   border: none;
