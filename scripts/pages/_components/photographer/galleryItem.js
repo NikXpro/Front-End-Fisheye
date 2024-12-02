@@ -43,7 +43,7 @@ export function galleryItem(data) {
   mediaElement.tabIndex = 0;
   mediaElement.setAttribute(
     "aria-label",
-    `Ouvrir ${data.title} en vue agrandie`
+    `${data.title}, cliquez pour ouvrir en vue agrandie. ${data.likes} likes`
   );
 
   // Gestion du clavier
@@ -67,16 +67,20 @@ export function galleryItem(data) {
 
   const likesContainer = document.createElement("div");
   likesContainer.classList.add("photograph-gallery-item-likes");
+  likesContainer.setAttribute("aria-live", "polite");
 
   const likesCount = document.createElement("span");
   likesCount.classList.add("photograph-gallery-item-likes-count");
+  likesCount.id = `likes-count-${data.id}`;
+  likesCount.setAttribute("aria-live", "polite");
   likesCount.textContent = data.likes;
   likesContainer.appendChild(likesCount);
 
   const likeButton = document.createElement("button");
   likeButton.classList.add("photograph-gallery-item-like-button");
-  likeButton.setAttribute("aria-label", "J'aime");
+  likeButton.setAttribute("aria-label", `J'aime ${data.title}`);
   likeButton.setAttribute("aria-pressed", "false");
+  likeButton.setAttribute("aria-controls", `likes-count-${data.id}`);
   likeButton.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
