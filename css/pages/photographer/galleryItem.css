@@ -11,11 +11,11 @@
   border-radius: 0.3125rem;
   object-fit: cover;
   cursor: pointer;
+}
 
-  &:focus {
-    outline: 4px solid #a50000;
-    outline-offset: 2px;
-  }
+.photograph-gallery-item-image:focus {
+  outline: 4px solid #a50000;
+  outline-offset: 2px;
 }
 
 .photograph-gallery-item-image[src$=".mp4"] {
@@ -57,11 +57,11 @@ video.photograph-gallery-item-image {
   background: none;
   border: none;
   border-radius: 0.3125rem;
+}
 
-  &:focus {
-    outline: 2px solid #a50000;
-    outline-offset: 1px;
-  }
+.photograph-gallery-item-like-button:focus {
+  outline: 2px solid #a50000;
+  outline-offset: 1px;
 }
 
 .photograph-gallery-item-likes-icon {
