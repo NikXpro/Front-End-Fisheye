@@ -6,19 +6,99 @@ export function createCarousel() {
   const carousel = document.createElement("div");
   carousel.id = "carousel";
   carousel.className = "carousel";
-  carousel.setAttribute("aria-label", "image closeup view");
   carousel.setAttribute("role", "dialog");
+  carousel.setAttribute("aria-modal", "true");
+  carousel.setAttribute("aria-label", "Visionneuse de médias");
   carousel.style.display = "none";
 
-  carousel.innerHTML = `
-    <button class="close" aria-label="Close dialog">×</button>
-    <button class="prev" aria-label="Previous image">‹</button>
-    <img src="" alt="" class="carousel-image" style="display: none;">
-    <video class="carousel-video" controls style="display: none;"></video>
-    <button class="next" aria-label="Next image">›</button>
-  `;
+  const container = document.createElement("div");
+  container.className = "carousel-container";
+  container.setAttribute("role", "region");
+  container.setAttribute("aria-live", "polite");
 
-  document.body.appendChild(carousel);
+  const closeButton = document.createElement("button");
+  closeButton.className = "close";
+  closeButton.setAttribute("aria-label", "Fermer la visionneuse");
+  closeButton.innerHTML =
+    '<img src="assets/icons/close-carousel.svg" alt="" class="close-carousel">';
+
+  const prevButton = document.createElement("button");
+  prevButton.className = "prev";
+  prevButton.setAttribute("aria-label", "Image précédente");
+  prevButton.innerHTML =
+    '<img src="./assets/icons/arrow-carousel.svg" alt="" class="carousel-arrow">';
+
+  const nextButton = document.createElement("button");
+  nextButton.className = "next";
+  nextButton.setAttribute("aria-label", "Image suivante");
+  nextButton.innerHTML =
+    '<img src="./assets/icons/arrow-carousel.svg" alt="" class="carousel-arrow">';
+
+  const image = document.createElement("img");
+  image.className = "carousel-image";
+  image.setAttribute("role", "img");
+  image.style.display = "none";
+
+  const video = document.createElement("video");
+  video.className = "carousel-video";
+  video.setAttribute("role", "application");
+  video.setAttribute("aria-label", "Vidéo");
+  video.controls = true;
+  video.style.display = "none";
+
+  const statusDiv = document.createElement("div");
+  statusDiv.className = "carousel-status";
+  statusDiv.setAttribute("role", "status");
+  statusDiv.setAttribute("aria-live", "polite");
+
+  container.appendChild(closeButton);
+  container.appendChild(prevButton);
+  container.appendChild(image);
+  container.appendChild(video);
+  container.appendChild(nextButton);
+  container.appendChild(statusDiv);
+  carousel.appendChild(container);
+
+  // Gestion du focus et du clavier
+  const focusableElements = [closeButton, prevButton, image, video, nextButton];
+
+  carousel.addEventListener("keydown", (e) => {
+    switch (e.key) {
+      case "Escape":
+        carousel.style.display = "none";
+        document.body.classList.remove("no-scroll");
+        break;
+      case "Tab":
+        const firstFocusable = focusableElements[0];
+        const lastFocusable = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey && document.activeElement === firstFocusable) {
+          e.preventDefault();
+          lastFocusable.focus();
+        } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable.focus();
+        }
+        break;
+      case "ArrowLeft":
+        e.preventDefault();
+        prevButton.click();
+        break;
+      case "ArrowRight":
+        e.preventDefault();
+        nextButton.click();
+        break;
+    }
+  });
+
+  // Annonce pour les lecteurs d'écran lors de l'ouverture
+  carousel.addEventListener("show", () => {
+    statusDiv.textContent =
+      "Visionneuse ouverte. Utilisez les flèches gauche et droite pour naviguer entre les images.";
+    setTimeout(() => {
+      statusDiv.textContent = "";
+    }, 2000);
+  });
 
   return carousel;
 }
