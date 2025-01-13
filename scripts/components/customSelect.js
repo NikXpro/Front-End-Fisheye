@@ -18,6 +18,11 @@ export function customSelect(options, defaultText = "Popularité") {
   summary.setAttribute("aria-controls", "sort-options");
   summary.tabIndex = 0;
 
+  const srAnnouncer = document.createElement("span");
+  srAnnouncer.setAttribute("aria-live", "polite");
+  srAnnouncer.classList.add("sr-only");
+  details.appendChild(srAnnouncer);
+
   const ul = document.createElement("ul");
   ul.id = "sort-options";
   ul.setAttribute("role", "listbox");
@@ -40,15 +45,14 @@ export function customSelect(options, defaultText = "Popularité") {
   // Gestion de l'état ouvert/fermé
   details.addEventListener("toggle", () => {
     summary.setAttribute("aria-expanded", details.open);
+
     if (details.open) {
       ul.querySelector("li").focus();
-      // Annonce aux lecteurs d'écran que le menu est ouvert
-      const announcement = document.createElement("div");
-      announcement.setAttribute("role", "status");
-      announcement.setAttribute("aria-live", "polite");
-      announcement.textContent = "Menu de tri ouvert";
-      details.appendChild(announcement);
-      setTimeout(() => announcement.remove(), 1000);
+      // Annoncer aux lecteurs d'écran sans modifier le texte visible
+      srAnnouncer.textContent = "Menu de tri ouvert";
+      setTimeout(() => {
+        srAnnouncer.textContent = "";
+      }, 1000);
     }
   });
 
