@@ -1,3 +1,11 @@
+// Fonction pour mettre à jour l'affichage du total des likes
+function updateTotalLikesDisplay() {
+  const totalLikesElement = document.querySelector(".total-likes-count");
+  if (totalLikesElement) {
+    totalLikesElement.textContent = window.globalTotalLikes;
+  }
+}
+
 /**
  * Creates a gallery item element for a photographer's photo
  * @param {Object} data - The photo data
