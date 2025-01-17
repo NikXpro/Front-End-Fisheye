@@ -8,6 +8,7 @@ import { initContactForm } from "./_components/photographer/contactForm.js";
 import { galleryItem } from "./_components/photographer/galleryItem.js";
 import { displayPhotographerInfo } from "./_components/photographer/photographHeader.js";
 import { select } from "./_components/photographer/select.js";
+import { totalCard } from "./_components/photographer/totalCard.js";
 
 /**
  * Fetches photographer and their media data by ID from the JSON file
@@ -103,6 +104,13 @@ async function displayData(photographer, media) {
     select(media, updateGallery);
     updateGallery(media);
     setupGalleryClick();
+
+    // Calculer le total des likes
+    const totalLikes = media.reduce((sum, item) => sum + item.likes, 0);
+
+    // Créer et ajouter la totalCard
+    const totalCardElement = totalCard(totalLikes, photographer.price);
+    document.body.appendChild(totalCardElement);
   } else {
     photographerSection.innerHTML = "<p>Photographer not found</p>";
   }
