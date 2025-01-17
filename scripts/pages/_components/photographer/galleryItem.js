@@ -96,6 +96,34 @@ export function galleryItem(data) {
     }
   });
 
+  // Gestion du like
+  let isLiked = false;
+  likeButton.addEventListener("click", () => {
+    isLiked = !isLiked;
+    const currentLikes = parseInt(likesCount.textContent);
+    const newLikes = isLiked ? currentLikes + 1 : currentLikes - 1;
+    likesCount.textContent = newLikes;
+    data.likes = newLikes;
+    likeButton.setAttribute("aria-pressed", isLiked.toString());
+
+    // Mettre à jour le total des likes global
+    window.globalTotalLikes = isLiked
+      ? window.globalTotalLikes + 1
+      : window.globalTotalLikes - 1;
+    updateTotalLikesDisplay();
+
+    // Changer l'icône en fonction de l'état du like
+    likesIcon.src = isLiked
+      ? "/assets/icons/likes.svg"
+      : "/assets/icons/favorite.svg";
+
+    // Mettre à jour l'aria-label du média
+    mediaElement.setAttribute(
+      "aria-label",
+      `${data.title}, cliquez pour ouvrir en vue agrandie. ${newLikes} likes`
+    );
+  });
+
   const likesIcon = document.createElement("img");
   likesIcon.classList.add("photograph-gallery-item-likes-icon");
   likesIcon.src = "/assets/icons/favorite.svg";
