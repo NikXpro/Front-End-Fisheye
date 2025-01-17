@@ -5,6 +5,7 @@
 @import "./_components/customSelect.css";
 @import "./_components/carousel.css";
 @import "./_components/contactModal.css";
+@import "./pages/photographer/totalCard.css";
 
 .photograph-gallery {
   display: flex;
