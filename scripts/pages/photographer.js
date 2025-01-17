@@ -109,7 +109,10 @@ async function displayData(photographer, media) {
     window.globalTotalLikes = media.reduce((sum, item) => sum + item.likes, 0);
 
     // Créer et ajouter la totalCard
-    const totalCardElement = totalCard(totalLikes, photographer.price);
+    const totalCardElement = totalCard(
+      window.globalTotalLikes,
+      photographer.price
+    );
     document.body.appendChild(totalCardElement);
   } else {
     photographerSection.innerHTML = "<p>Photographer not found</p>";
