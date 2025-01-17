@@ -105,8 +105,8 @@ async function displayData(photographer, media) {
     updateGallery(media);
     setupGalleryClick();
 
-    // Calculer le total des likes
-    const totalLikes = media.reduce((sum, item) => sum + item.likes, 0);
+    // Calculer et initialiser le total des likes global
+    window.globalTotalLikes = media.reduce((sum, item) => sum + item.likes, 0);
 
     // Créer et ajouter la totalCard
     const totalCardElement = totalCard(totalLikes, photographer.price);
